@@ -183,7 +183,7 @@ mpirun -np $SLURM_NTASKS binaryi < input
 <div class="info-box">
   <h3 onclick="toggleInfoBox(this)">OpenMP</h3>
   <div class="content">
-<p><span style="font-family: Helvetica, Arial, sans-serif;"> For a OpenMP application the number of threads can be controlled defining the <code>OMP_NUM_THREADS</code> or SLURM's <code>--cpus-per-task</code> job directive. If this variable is not defined, the number of threads created will be equal to the amount of cores reserved in your cpuset, that is, the number of cores requested in the batch script. </span></p>
+<p><span style="font-family: Helvetica, Arial, sans-serif;"> For a OpenMP application the number of threads can be controlled defining the ``OMP_NUM_THREADS`` or SLURM's ``--cpus-per-task`` job directive. If this variable is not defined, the number of threads created will be equal to the amount of cores reserved in your cpuset, that is, the number of cores requested in the batch script. </span></p>
 <pre>
 #!/bin/bash
 #SBATCH --partition=regular
@@ -226,7 +226,7 @@ mpirun -np $SLURM_NTASKS binaryi < input
 <div class="info-box">
   <h3 onclick="toggleInfoBox(this)">GPU jobs</h3>
   <div class="content">
-<p><span style="font-family: Helvetica, Arial, sans-serif;">GPU jobs refer to tasks or applications that utilize the computational power of Graphics Processing Units (GPUs) for accelerated processing. GPU jobs are commonly used for deep learning, scientific simulations, data analytics, and other computationally intensive tasks that can benefit from parallel processing on GPUs. By leveraging the power of GPUs, these jobs can achieve significant performance gains compared to running on CPUs alone.One can request the usage of GPUs by adding <code>#SBATCH --gres=gpu:p40:X</code> to the submision script. In the following example we request 2 GPUs per node </span></p>
+<p><span style="font-family: Helvetica, Arial, sans-serif;">GPU jobs refer to tasks or applications that utilize the computational power of Graphics Processing Units (GPUs) for accelerated processing. GPU jobs are commonly used for deep learning, scientific simulations, data analytics, and other computationally intensive tasks that can benefit from parallel processing on GPUs. By leveraging the power of GPUs, these jobs can achieve significant performance gains compared to running on CPUs alone.One can request the usage of GPUs by adding ``#SBATCH --gres=gpu:p40:X`` to the submision script. In the following example we request 2 GPUs per node </span></p>
 <pre>
 #!/bin/bash
 #SBATCH --partition=regular
@@ -271,22 +271,22 @@ echo "Instance index is ${SLURM_ARRAY_TASK_ID}."
 <div class="info-box">
   <h3 onclick="toggleInfoBox(this)">Dependency chains</h3>
   <div class="content">
-   <p><span style="font-family: Helvetica, Arial, sans-serif;">Job dependencies are used to defer the start of a job until some dependencies have been satisfied. Job dependencies can be defined using the <code>--dependency</code> argument of the <code>sbatch</code> command:
+   <p><span style="font-family: Helvetica, Arial, sans-serif;">Job dependencies are used to defer the start of a job until some dependencies have been satisfied. Job dependencies can be defined using the ``--dependency`` argument of the ``sbatch`` command:
 <br>
-    <code>#SBATCH --dependency="dependency_type"</code>
+    ``#SBATCH --dependency="dependency_type"``
    <br>
    <br>
     Available dependencies are:
    <br>
-    - <code>after:jobID</code> job starts when job with <code>jobID</code> begun execution.
+    - ``after:jobID`` job starts when job with ``jobID`` begun execution.
    <br>
-    - <code>afterany:jobID</code> job starts when job with <code>jobID</code> terminates.
+    - ``afterany:jobID`` job starts when job with ``jobID`` terminates.
    <br>
-    - <code>aferok:jobID</code> job starts when job with <code>jobID</code> terminates successfully.
+    - ``aferok:jobID`` job starts when job with ``jobID`` terminates successfully.
    <br>
-    - <code>afternook:jobID</code> job starts when job with <code>jobID</code> terminates with non-zero status.
+    - ``afternook:jobID`` job starts when job with ``jobID`` terminates with non-zero status.
    <br>
-    - <code>singleton:jobID</code> jobs starts when any previously job with the same job name and user terminates. This can be used to chain restartable jobs.
+    - ``singleton:jobID`` jobs starts when any previously job with the same job name and user terminates. This can be used to chain restartable jobs.
 
       <pre>
 #!/bin/bash
