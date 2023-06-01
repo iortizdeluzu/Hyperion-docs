@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="canonical" href="https://hyperion-docs.com/Training/3_first-job/">
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>First Job - Hyperion Documentation Webpage</title>
+  <link rel="stylesheet" href="../../css/theme.css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "First Job";
+    var mkdocs_page_input_path = "Training/3_first-job.md";
+    var mkdocs_page_url = "/Training/3_first-job/";
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> Hyperion Documentation Webpage</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../about/">About</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Training</span></p>
+                <ul class="current">
+                    <li class="toctree-l1"><a class="reference internal" href="../introduction/1_introduction/">Introduction</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../workflow/2_workflow/">Workflow</a>
+                    </li>
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">First Job</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#the-monte-carlo-method">The Monte Carlo Method</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#sample-batch-script">Sample Batch Script</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#interactive-job-with-salloc">Interactive job with salloc</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#direct-job-step-execution-with-srun">Direct job step execution with srun</a>
+    </li>
+    </ul>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../4_monitoring/">Monitoring</a>
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../5_contrains.md">Constrains</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../6_postrun/">Post Run</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../7_examples/">Examplex</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../advanced/8_advanced/">Advanced</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">Hyperion Documentation Webpage</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Training &raquo;</li>
+        
+      
+    
+    <li>First Job</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="first-example-estimation-of-the-valur-of-pi-with-monte-carlo-methods">First Example: Estimation of the valur of Pi with Monte Carlo methods</h1>
+<p>Before delving into the code, let's further explore the problem at hand. </p>
+<p>Pi (π) is a mathematical constant originally defined as the ratio of a circle's circumference to its diameter. It's a fundamental element in mathematics and appears in many formulas in all areas of mathematics and physics.</p>
+<p>However, π is an irrational number, meaning it cannot be expressed as a simple fraction, and its decimal representation never ends or settles into a permanently repeating pattern. Although we usually approximate π as 3.14159, its exact value is unknown.</p>
+<p>So how can we estimate it using a computer program? That's where the Monte Carlo method comes in.</p>
+<h2 id="the-monte-carlo-method">The Monte Carlo Method</h2>
+<p>The Monte Carlo method, named after the famous Monaco casino, is a statistical technique that uses random sampling to obtain numerical results. The underlying concept is to use randomness to solve problems that might be deterministic in principle.</p>
+<p>In this case, we'll be using the Monte Carlo method to estimate the value of π. Here's the idea:</p>
+<ol>
+<li>
+<p><strong>Create a bounded area</strong>: Imagine a square with a side length of 1 unit. Now, inscribe a quarter-circle with a radius of 1 unit inside this square, like a pie wedge.</p>
+</li>
+<li>
+<p><strong>Throw darts</strong>: We then "throw darts" at this square. The position (x, y) of each dart is determined randomly.</p>
+</li>
+<li>
+<p><strong>Determine if the dart is inside the quarter-circle</strong>: For each dart, we compute whether it has landed inside the quarter-circle using the equation of a circle (x^2 + y^2 &lt; r^2, where r is the radius). If the dart lands inside the circle (x^2 + y^2 &lt; 1), we consider it a hit.</p>
+</li>
+<li>
+<p><strong>Approximate π</strong>: We do this thousands or even millions of times. The ratio of the number of darts that hit inside the circle to the total number of darts thrown will approximately be π/4. </p>
+</li>
+</ol>
+<p>So, by multiplying this ratio by 4, we can approximate π!</p>
+<p>Now, this process is inherently parallel — each "dart throw" is an independent event, and we can perform multiple dart throws simultaneously. This is a perfect scenario for using a high-performance computing environment like SLURM. The more parallel processes we can run (and hence, the more darts we can throw), the better our approximation of π can be. </p>
+<p>In the example script, we'll be generating these "random dart throws" using the Bash <code>$RANDOM</code> variable and then estimating π in parallel tasks. By submitting this task to SLURM, we'll effectively be demonstrating a simple, yet powerful use case of HPC.</p>
+<p>Absolutely, we can integrate the use of <code>sbatch</code>, <code>salloc</code>, and <code>srun</code> into the Monte Carlo Pi estimation example. Here's the revised section:</p>
+<h2 id="sample-batch-script">Sample Batch Script</h2>
+<p>First, let's examine the SLURM batch script. We'll name our batch script <code>pi_estimation.sh</code>. It's important to note that the batch script is the primary way to submit jobs to the SLURM scheduler, and we submit this script using the <code>sbatch</code> command.</p>
+<pre><code class="language-bash">#!/bin/bash
+
+#SBATCH --job-name=PiEstimation
+#SBATCH --output=pi_job.%j.out
+#SBATCH --error=pi_job.%j.err
+#SBATCH --nodes=1
+#SBATCH --ntasks-per-node=4
+#SBATCH --time=01:00:00
+#SBATCH --mail-type=END,FAIL
+#SBATCH --mail-user=your-email@example.com
+
+# Load any necessary modules and activate the conda environment (if any)
+# module load python/3.8
+
+# Start the job steps
+date;hostname;pwd
+
+for i in $(seq 1 $SLURM_NTASKS); do
+    (
+        # Each task performs 10^6 trials
+        trials=1000000
+        count=0
+
+        for (( j=0; j&lt;trials; j++ )); do
+            x=$(echo &quot;scale=4; $RANDOM/32767&quot; | bc -l)
+            y=$(echo &quot;scale=4; $RANDOM/32767&quot; | bc -l)
+
+            # Test if the point ($x, $y) lies within the unit circle
+            inside=$( echo &quot;$x*$x + $y*$y &lt; 1.0&quot; | bc -l)
+
+            # Increase count if the point is inside the circle
+            if [[ $inside -eq 1 ]]; then
+                ((count++))
+            fi
+        done
+
+        # Estimate Pi based on the count and the number of trials
+        pi=$(echo &quot;scale=4; 4*$count/$trials&quot; | bc -l)
+
+        echo &quot;Task $i: Pi is approximately $pi&quot;
+    ) &amp;
+done
+
+# Wait for all background tasks to finish
+wait
+</code></pre>
+<p>Once you've written your batch script, you can submit it to SLURM using the <code>sbatch</code> command. The <code>sbatch</code> command reads a script file and submits the script as a job to SLURM. The script contains both the job parameters, specified on lines beginning with <code>#SBATCH</code>, and the job commands.</p>
+<pre><code class="language-bash">sbatch pi_estimation.sh
+</code></pre>
+<p>Here are the explanations for each <code>SBATCH</code> directive used in our batch script:</p>
+<table>
+<thead>
+<tr>
+<th>Directive</th>
+<th>Explanation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>--job-name=PiEstimation</code></td>
+<td>Sets the name of the job. This name appears in the job listings, making it easier to manage jobs.</td>
+</tr>
+<tr>
+<td><code>--output=pi_job.%j.out</code></td>
+<td>Sets the name of the standard output file for the job. <code>%j</code> is replaced with the job ID.</td>
+</tr>
+<tr>
+<td><code>--error=pi_job.%j.err</code></td>
+<td>Sets the name of the standard error file for the job. <code>%j</code> is replaced with the job ID.</td>
+</tr>
+<tr>
+<td><code>--nodes=1</code></td>
+<td>Specifies that the job requires 1 node.</td>
+</tr>
+<tr>
+<td><code>--ntasks-per-node=4</code></td>
+<td>Specifies the number of tasks to be initiated on each node. In this case, we have 4 tasks per node.</td>
+</tr>
+<tr>
+<td><code>--time=01:00:00</code></td>
+<td>Sets a limit on the total run time of the job. The job will be terminated if it runs longer than this limit.</td>
+</tr>
+<tr>
+<td><code>--mail-type=END,FAIL</code></td>
+<td>Sends an email when the job ends or fails.</td>
+</tr>
+<tr>
+<td><code>--mail-user=your-email@example.com</code></td>
+<td>Specifies the email address to receive job status updates.</td>
+</tr>
+</tbody>
+</table>
+<p>Remember that all <code>SBATCH</code> directives must come before any executable line in your script. </p>
+<p>This batch script generates four parallel tasks, each performing a million trials to estimate the value of Pi. It demonstrates both the basic usage of SLURM and the application of parallel processing in solving computationally intensive problems. </p>
+<p>To submit this job script to SLURM, we would use the <code>sbatch</code> command:</p>
+<pre><code class="language-bash">sbatch pi_estimation.sh
+</code></pre>
+<p>This script, as well as subsequent outputs, error logs, and other relevant files, will be used throughout this course as we delve deeper into the powerful features of SLURM.</p>
+<h2 id="interactive-job-with-salloc">Interactive job with salloc</h2>
+<p>In some cases, you might want to run your jobs interactively, that is, get a shell on a compute node where you can type commands and run programs directly. This can be done using <code>salloc</code>.</p>
+<p>Here's how you could use <code>salloc</code> to start an interactive shell with 4 CPUs for one hour, and then run the Pi estimation program interactively:</p>
+<pre><code class="language-bash">salloc --ntasks=4 --time=01:00:00 bash pi_estimation.sh exit
+</code></pre>
+<p>The <code>salloc</code> command allocates resources (in this case, 4 tasks for a duration of one hour) and starts a shell. In that shell, you can then directly execute the <code>pi_estimation.sh</code> script. Once you're done, don't forget to type <code>exit</code> to release the allocation.</p>
+<h2 id="direct-job-step-execution-with-srun">Direct job step execution with srun</h2>
+<p><code>srun</code> is another important command in SLURM. It allows you to run job steps directly without having to write a batch script. A job step is essentially a set of (possibly multiple) tasks that are co-scheduled across one or more nodes.</p>
+<p>In the context of our Pi estimation program, you could use <code>srun</code> to directly run the Pi estimation commands as a job step. However, as our script is a bit more complex (with loops and conditionals), it's not straightforward to do it with <code>srun</code> directly. Instead, we can wrap our core script into another script and then use <code>srun</code> to execute it:
+First, extract the core logic of our Pi estimation into a separate script, <code>core_pi.sh</code>:</p>
+<pre><code class="language-bash">#!/bin/bash
+
+# Each task performs 10^6 trials
+trials=1000000
+count=0
+
+for (( j=0; j&lt;trials; j++ )); do
+    x=$(echo &quot;scale=4; $RANDOM/32767&quot; | bc -l)
+    y=$(echo &quot;scale=4; $RANDOM/32767&quot; | bc -l)
+
+    # Test if the point ($x, $y) lies within the unit circle
+    inside=$( echo &quot;$x*$x + $y*$y &lt; 1.0&quot; | bc -l)
+
+    # Increase count if the point is inside the circle
+    if [[ $inside -eq 1 ]]; then
+        ((count++))
+    fi
+done
+
+# Estimate Pi based on the count and the number of trials
+pi=$(echo &quot;scale=4; 4*$count/$trials&quot; | bc -l)
+
+echo &quot;Task $SLURM_PROCID: Pi is approximately $pi&quot;
+</code></pre>
+<p>Then, use <code>srun</code> to run this script as a job step, creating 4 tasks:</p>
+<pre><code class="language-bash">srun --ntasks=4 --time=01:00:00 bash core_pi.sh
+</code></pre>
+<p>Each of the 4 tasks will execute <code>core_pi.sh</code> separately, effectively running our Pi estimation in parallel.</p>
+<p>Remember, <code>srun</code> and <code>salloc</code> provide you with more flexibility and control over your job execution. You'll typically use <code>sbatch</code> for most of your jobs (especially long ones or ones that you want to schedule and forget), but <code>srun</code> and <code>salloc</code> can be very handy for quick or interactive jobs.</p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../4_monitoring/" class="btn btn-neutral float-right" title="Monitoring">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../workflow/2_workflow/" class="btn btn-neutral" title="Workflow"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../workflow/2_workflow/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../4_monitoring/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

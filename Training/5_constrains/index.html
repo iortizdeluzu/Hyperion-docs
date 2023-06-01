@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="canonical" href="https://hyperion-docs.com/Training/5_constrains/">
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>Policies and constrains - Hyperion Documentation Webpage</title>
+  <link rel="stylesheet" href="../../css/theme.css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Policies and constrains";
+    var mkdocs_page_input_path = "Training/5_constrains.md";
+    var mkdocs_page_url = "/Training/5_constrains/";
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> Hyperion Documentation Webpage</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../about/">About</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Training</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../introduction/1_introduction/">Introduction</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../workflow/2_workflow/">Workflow</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../3_first-job/">First Job</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../4_monitoring/">Monitoring</a>
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../5_contrains.md">Constrains</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../6_postrun/">Post Run</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../7_examples/">Examplex</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../advanced/8_advanced/">Advanced</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">Hyperion Documentation Webpage</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Policies and constrains</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="policies-and-constrains">Policies and constrains</h1>
+<p>In an HPC (High-Performance Computing) environment, imposing constraints plays a crucial role in effectively managing and optimizing job execution. These constraints collectively contribute to the overall effectiveness and fairness of job management in an HPC environment. By implementing appropriate constraints, HPC systems can enhance resource utilization, minimize job delays, and accommodate the diverse computational needs of multiple users and applications.</p>
+<table style="text-align: center; border-collapse: collapse;">
+  <tr style="border-bottom: 1px solid black;">
+    <th>QoS/Partition</th>
+    <th>Priority</th>
+    <th>MaxWall</th>
+    <th>MaxNodesPU</th>
+    <th>MaxJobsPU</th>
+    <th>MaxSubmitPU</th>
+    <th>MaxTRES</th>
+  </tr>
+  <tr style="border-bottom: 1px solid black;">
+    <td>regular</td>
+    <td>200</td>
+    <td>1-00:00:00</td>
+    <td>24</td>
+    <td>50</td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr style="border-bottom: 1px solid black;">
+    <td>test</td>
+    <td>500</td>
+    <td>00:10:00</td>
+    <td>2</td>
+    <td>2</td>
+    <td>2</td>
+    <td></td>
+  </tr>
+  <tr style="border-bottom: 1px solid black;">
+    <td>long</td>
+    <td>200</td>
+    <td>2-00:00:00</td>
+    <td>24</td>
+    <td>20</td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr style="border-bottom: 1px solid black;">
+    <td>xlong</td>
+    <td>200</td>
+    <td>8-00:00:00</td>
+    <td>6</td>
+    <td>14</td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr style="border-bottom: 1px solid black;">
+    <td>large</td>
+    <td>200</td>
+    <td>2-00:00:00</td>
+    <td>40</td>
+    <td>6</td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr style="border-bottom: 1px solid black;">
+    <td>xlarge</td>
+    <td>200</td>
+    <td>2-00:00:00</td>
+    <td>80</td>
+    <td>6</td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr style="border-bottom: 1px solid black;">
+    <td>serial</td>
+    <td>200</td>
+    <td>2-00:00:00</td>
+    <td>24</td>
+    <td>120</td>
+    <td></td>
+    <td>cpu=1<br/>gpu=1<br/>node=1</td>
+  </tr>
+</table>
+
+<p>This is what each columns means:</p>
+<ul>
+<li>MaxWall: Maximum amount of time the job is allowed to run. ´1-00:00:00´ reads as one day or 24 hours.</li>
+<li>MaxNodesPU: Maximum amount of nodes user's jobs can use at a given time.</li>
+<li>MaxJobsPU: Maximum number of running jobs per user.</li>
+<li>MaxSubmitPU: Maximum number of jobs that can be submitted to the QoS/partition.</li>
+<li>MaxTRES: The maximum number of Trackable RESources (TRES) each job is able to use. </li>
+</ul>
+              
+            </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>
